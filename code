@@ -1,9 +1,13 @@
+dcl int i;
+If message.payment.type in ('BENE_ADD') then do;
+	profile.customer_beneficiary.BENE_ADD_DT = message.payment.createdDt;
+end;
+
 If message.payment.type in ('DEBIT') then do;
-    If not missing(profile.customer_beneficiary.BENE_ADD_DT) then do;
-        if message.payment.createdDt - profile.customer_beneficiary.BENE_ADD_DT < dhms(2,0,0,0) then do;
-			profile.customer.X_RISK_= profile.customer.X_RISK_ + 30;
-            detection.Fire();
-            detection.Alert();
+    if not missing(profile.customer.X_PREV_TXN_AMT[1]) then do;
+        do i = 10 to 2 by -1;
+            profile.customer.X_PREV_TXN_AMT[i] = profile.customer.X_PREV_TXN_AMT[i - 1];
         end;
     end;
+    profile.customer.X_PREV_TXN_AMT[1]=message.payment.amount;
 end;
