@@ -1,3 +1,9 @@
-If message.payment.type in ('BENE_ADD') then do;
-	profile.customer_beneficiary.BENE_ADD_DT = message.payment.createdDt;
+If message.payment.type in ('DEBIT') then do;
+    If not missing(profile.customer_beneficiary.BENE_ADD_DT) then do;
+        if message.payment.createdDt - profile.customer_beneficiary.BENE_ADD_DT < dhms(2,0,0,0) then do;
+			profile.customer.X_RISK_= profile.customer.X_RISK_ + 30;
+            detection.Fire();
+            detection.Alert();
+        end;
+    end;
 end;
