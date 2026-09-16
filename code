@@ -1,8 +1,3 @@
-If message.payment.type in ('DEBIT') then do;
-    If not missing(profile.customerxdevice.H_REG_DT) then do;
-		if message.payment.createdDt - profile.customerxdevice.H_REG_DT < dhms(2,0,0,0) then do;
-			profile.customer.X_risk_= profile.customer.X_risk_+20;
-            detection.Alert();
-        end;
-    end;
+If message.payment.type in ('BENE_ADD') then do;
+	profile.customer_beneficiary.BENE_ADD_DT = message.payment.createdDt;
 end;
