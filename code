@@ -1,9 +1,8 @@
-If message.payment.type in ('DEVICE_REG') then do;
-	profile.customerxdevice.H_REG_DT=message.payment.createdDt;
-end;
-
-if message.payment.type in ('LOGIN') then do;
-	if missing(profile.customerxdevice.H_REG_DT) then do;
-	    profile.customerxdevice.H_REG_DT=message.payment.createdDt;
+If message.payment.type in ('DEBIT') then do;
+    If not missing(profile.customerxdevice.H_REG_DT) then do;
+		if message.payment.createdDt - profile.customerxdevice.H_REG_DT < dhms(2,0,0,0) then do;
+			profile.customer.X_risk_= profile.customer.X_risk_+20;
+            detection.Alert();
+        end;
     end;
 end;
