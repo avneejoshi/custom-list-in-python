@@ -1,0 +1,18 @@
+if message.payment.type in ('DEBIT') then do;   
+    if lists.blacklistDeviceID.contains(message.device.udid)  then do;
+        profile.customer.X_RISK_= profile.customer.X_RISK_ + 40;
+        detection.Alert();
+        detection.Fire();
+    end;
+    if lists.blackListAccNo.contains(message.debitaccount.iban) then do;
+        profile.customer.X_RISK_= profile.customer.X_RISK_ + 40;
+        detection.Alert();
+        detection.Fire();
+        
+    end;
+    if lists.blacklistIPs.contains(message.device.ipAddress) then do;
+        profile.customer.X_RISK_= profile.customer.X_RISK_ + 40;
+        detection.Alert();
+        detection.Fire();        
+    end;
+end;
