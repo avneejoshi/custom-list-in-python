@@ -1,18 +1,1 @@
-dcl double agg_txn_amt;
-dcl int i;
-agg_txn_amt = 0;
-
-If message.payment.type in ('DEBIT') then do;
-    If not missing(profile.customer_beneficiary.BENE_ADD_DT) then do;
-        if (message.payment.createdDt - profile.customer_beneficiary.BENE_ADD_DT <dhms(0,6,0,0)) then do;
-			do i = 10 to 2 by -1;
-                agg_txn_amt= agg_txn_amt+profile.customer.X_PREV_TXN_AMT[i];
-            end;
-            if message.payment.amount > agg_txn_amt then do;
-                profile.customer.X_RISK_= profile.customer.X_RISK_ + 40;
-                detection.alert();
-                detection.fire();
-            end;
-        end;
-    end;
-end;
+http://global.sasserver.demo.sas.com/detection/decision/execute
