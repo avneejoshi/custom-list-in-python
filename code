@@ -1,2 +1,43 @@
-
-txn_3005	BENEFICIARY ADDITION	2026-09-22T04:16:00Z				CUST30003		18.00.72.3	DEV3003	DEV3003			BENE002
+{
+  "Transaction": {
+    "transactionID": "txn_3005",
+    "transactionType": "BENEFICIARY ADDITION",
+    "transactionDateTimeUTC": "2026-09-22T04:16:00Z"
+  },
+  "Customer": {
+    "customerId": "CUST30003"
+  },
+  "Device": {
+    "ipAddress": "18.00.72.3",
+    "deviceId": "DEV3003",
+    "MACAddress": "DEV3003"
+  },
+  "CounterParty": {
+    "counterPartyAccountNumberIban": "BENE002"
+  }
+}
+{
+  "Transaction": {
+    "transactionID": "txn1_001",
+    "transactionType": "FUND TRANSFER",
+    "transactionDateTimeUTC": "2026-09-22T04:18:00Z",
+    "transactionAmountLocalCurrency": 200000
+  },
+  "Customer": {
+    "customerId": "CUST30003"
+  },
+  "CustomerAccount": {
+    "customerAccountNumberIban": "ACC30003",
+    "customerAccountBalanceLocalCurrency": 42000000
+  },
+  "CounterPartyAccount": {
+    "counterPartyAccountNumberIban": "BENE002"
+  },
+  "Device": {
+    "deviceType": "18.00.72.3",
+    "deviceId": "DEV3006",
+    "MACAddress": "DEV3006",
+    "currentCountryCode": "VN",
+    "homeCountryCode": "IDN"
+  }
+}
