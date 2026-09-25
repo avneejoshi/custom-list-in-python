@@ -2,42 +2,134 @@
   "Transaction": {
     "transactionID": "txn_3005",
     "transactionType": "BENEFICIARY ADDITION",
-    "transactionDateTimeUTC": "2026-09-22T04:16:00Z"
+    "transactionDateTimeUTC": "2026-09-22T04:16:00Z",
+    "actualTransactionDateLocalTimeZone": "",
+    "transferType": "",
+    "transactionStatus": "",
+    "transactionDescription": "",
+    "channelName": ""
   },
   "Customer": {
-    "customerId": "CUST30003"
+    "customerId": "CUST30003",
+    "customerStatus": "",
+    "customerType": "",
+    "customerName": "",
+    "customerDob": "",
+    "customerNationalityNew": "",
+    "customerCountryCodeNew": "",
+    "customerPrefferedLanguage": "",
+    "employeeFlag": "",
+    "customerSalary": "",
+    "phoneNumber": "",
+    "email": "",
+    "employerName": "",
+    "creditOfficerId": ""
   },
   "Device": {
     "ipAddress": "18.00.72.3",
     "deviceId": "DEV3003",
-    "MACAddress": "DEV3003"
+    "MACAddress": "DEV3003",
+    "deviceGeoLocation": "",
+    "deviceCountryCode": "",
+    "deviceModel": "",
+    "deviceType": "",
+    "vpnConnected": ""
+  },
+  "Authentication": {
+    "authenticationMethod": "",
+    "authenticationDecision": "",
+    "authenticationDecisionReason": ""
+  },
+  "Core": {
+    "uniqueMessageId": ""
   },
   "CounterParty": {
-    "counterPartyAccountNumberIban": "BENE002"
+    "counterPartyAccountNumberIban": "BENE002",
+    "counterPartyType": "",
+    "counterPartyName": "",
+    "counterPartyBankCountryCode": ""
   }
 }
 {
   "Transaction": {
     "transactionID": "txn1_001",
     "transactionType": "FUND TRANSFER",
+    "transferType": "",
+    "transactionStatus": "",
+    "transactionAmountLocalCurrency": 200000,
     "transactionDateTimeUTC": "2026-09-22T04:18:00Z",
-    "transactionAmountLocalCurrency": 200000
+    "actualTransactionDatetimeLocalTimeZone": "",
+    "transactionCurrencyCode": "",
+    "transactionDescription": "",
+    "transactionStatusDescription": "",
+    "LoanID": "",
+    "channel": ""
   },
   "Customer": {
-    "customerId": "CUST30003"
+    "customerId": "CUST30003",
+    "customerType": "",
+    "customerSalary": "",
+    "employeeFlag": "",
+    "customerName": "",
+    "phoneNumber": "",
+    "email": "",
+    "employerName": "",
+    "creditOfficerId": "",
+    "channelId": ""
   },
   "CustomerAccount": {
     "customerAccountNumberIban": "ACC30003",
-    "customerAccountBalanceLocalCurrency": 42000000
+    "customerAccountBalanceLocalCurrency": 42000000,
+    "customerAccountNumber": "",
+    "customerCurrencyCode": "",
+    "customerBankName": "",
+    "customerBankCountryCode": "",
+    "customerAccountType": "",
+    "customerAccountStatus": ""
   },
   "CounterPartyAccount": {
-    "counterPartyAccountNumberIban": "BENE002"
+    "counterPartyAccountNumberIban": "BENE002",
+    "counterPartyBankCountryCode": "",
+    "counterPartyAccountStatus": "",
+    "counterPartyBankName": "",
+    "counterPartyCurrencyCode": "",
+    "counterPartyAccountNumber": "",
+    "counterPartyId": "",
+    "counterPartyAccountType": "",
+    "counterPartyAccountBalanceLocalCurrency": ""
+  },
+  "CounterParty": {
+    "counterPartyName": ""
   },
   "Device": {
     "deviceType": "18.00.72.3",
     "deviceId": "DEV3006",
     "MACAddress": "DEV3006",
     "currentCountryCode": "VN",
-    "homeCountryCode": "IDN"
+    "homeCountryCode": "IDN",
+    "ipAddress": "",
+    "deviceModel": ""
+  },
+  "Authentication": {
+    "authenticationMethod": "",
+    "authenticationDecision": "",
+    "authenticationDecisionReason": ""
+  },
+  "Core": {
+    "uniqueMessageId": ""
+  },
+  "Merchant": {
+    "merchantId": "",
+    "merchantName": "",
+    "mcc": ""
+  },
+  "CreditCard": {
+    "creditCardStatus": "",
+    "creditCardNumber": "",
+    "creditCardLimit": ""
+  },
+  "DebitCard": {
+    "debitCardStatus": "",
+    "debitCardNumber": ""
   }
 }
