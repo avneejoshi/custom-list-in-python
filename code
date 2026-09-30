@@ -1,4 +1,70 @@
-kubectl logs sas-alerts-57cbbc46f-v7pn7 -c external-data -n viya    
+          - label: "Device Data Demographics Flow"
+            inputs:
+              - httpServer:
+                  path: /device/data/{id}
+                  allowedVerbs:
+                    - GET
+                    - POST
 
-kubectl get pods -n viya
+            processors:
+              - log:
+                  level: INFO
+                  message: 'Received device data request for ID: ${! metadata("id") }'
 
+              - map:
+                  mapping: |
+                    root = {}
+
+              - sql:
+                  driver: postgres
+                  connectionString: "host=sasserver.demo.sas.com port=5432 user=dbmsowner password=VR60wKuwOQrHI53uQZcMfdg6 dbname=SharedServices sslmode=disable"
+                  query: >
+                    SELECT * FROM external_demo.exim_device
+                    
+                  allowQueryInterpolation: true
+                  allowQuerySharedServices: true
+                  parseQueryValidationEnabled: true
+
+              - log:
+                  level: INFO
+                  message: "Query for device is complete"
+
+              - map:
+                  mapping: |
+                    root.fields = [
+                      {"name": "deviceID", "value": this._sql.rows.0.0},
+                      {"name": "MACAddress", "value": this._sql.rows.0.1},
+                      {"name": "ipAddress", "value": this._sql.rows.0.2},
+                      {"name": "currentCountryCode", "value": this._sql.rows.0.3},
+                      {"name": "homeCountryCode", "value": this._sql.rows.0.4},
+                      {"name": "deviceModel", "value": this._sql.rows.0.5}
+                    ]
+            outputs:
+              - stdout: {}
+              - response: {}
+              
+          - label: "Device Data Metadata Flow"
+            inputs:
+              - httpServer:
+                  path: /device/meta
+                  allowedVerbs:
+                    - GET
+                    - POST
+
+            processors:
+              - log:
+                  level: INFO
+                  message: "Received device metadata request"
+
+              - map:
+                  mapping: |
+                    root.fields = [
+                      {"name": "deviceID", "label": "Device ID"},
+                      {"name": "MACAddress", "label": "MAC Address"},
+                      {"name": "ipAddress", "label": "IP Address"},
+                      {"name": "currentCountryCode", "label": "Country Code"},
+                      {"name": "homeCountryCode", "label": "Home Country"},
+                      {"name": "deviceModel", "label": "Device Model"}
+                    ]
+            outputs:
+              - response: {}
