@@ -1,0 +1,15 @@
+- op: replace
+  path: /data
+  value:
+    SAS_KAFKA_ENABLED: "true"
+    SAS_KAFKA_SERVER: "10.43.7.220:9092"
+    SAS_KAFKA_AUTO_CREATE_TOPICS: "true"
+    SAS_KAFKA_SECURITY_PROTOCOL: "" 
+    SAS_KAFKA_HOSTNAME_VERIFICATION: "false"
+    SAS_TRIAGE_KAFKA_TDR_TOPICS: "global-transaction-detection-repository"
+    SAS_TRIAGE_KAFKA_OUTBOUND_TOPIC: "alert-topic-outbound"
+    SAS_TRANSACTION_TDR_TOPICS: "global-transaction-detection-repository"
+    SAS_TRANSACTION_KAFKA_ERROR_TOPIC: "alert-topic-error"
+    SAS_TRANSACTION_MARK_TOPIC: "alert-topic-marking"
+    SAS_KAFKA_ACKS: "1"
+
